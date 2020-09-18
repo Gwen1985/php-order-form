@@ -59,11 +59,13 @@
 
         <fieldset>
             <legend>Products</legend>
-            <?php foreach ($products as $i => $product): ?>
+            <?php include_once 'Food.php';
+            foreach ($foodProducts as $i => $foodProducts): ?>
                 <label>
-                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?>
+                    <input type="checkbox" value="1"
+                           name="products[<?php echo $i ?>]"/> <?php echo $foodProducts['name'] ?>
                     -
-                    &euro; <?php echo number_format($product['price'], 2) ?></label><br/>
+                    &euro; <?php echo number_format($foodProducts['price'], 2) ?></label><br/>
             <?php endforeach; ?>
         </fieldset>
 
@@ -72,11 +74,11 @@
     </form>
 
     <?php
-
+    include 'Food.php';
+    include 'Drinks.php';
     //-----------------------------FORM-VALIDATION----------------------------------------------------------------------
     //set variables
     //    $nameFirst = $nameLast = $email = "";
-
     $street = (isset($_SESSION["street"])) ? $_SESSION['street'] : '';
     $streetNr = (isset($_SESSION["streetNr"])) ? $_SESSION['streetNr'] : '';
     $zipcode = (isset($_SESSION["zipcode"])) ? $_SESSION['zipcode'] : '';
@@ -139,62 +141,62 @@
         //--------------------------------------PRODUCTS----------------------------------------------------------------
 
         if (!empty($_POST['foodSelected'])) {
-            $orderedProducts = $_POST['foodselected'];
+            $orderedProducts = $_POST['$foodselected'];
         } else {
             $isFormValid = false;
             $productError = $errorPrefix . $errorRequiredProductText . $errorSuffix;
         }
 
-        if ($isFormValid) {
-            $orderAmount = calculateOrderAmount($products, $orderedProducts);
-            //echo 'Order amount: ' . $orderAmount . '<br />';
-            storeOrderAmount($orderAmount);
+//        if ($isFormValid) {
+//            $orderAmount = calculateOrderAmount($products, $orderedProducts);
+//            //echo 'Order amount: ' . $orderAmount . '<br />';
+//            storeOrderAmount($orderAmount);
 
-            //----------------------------------------------------------------------------------------------------------
-            // ADD FIELDS TO SESSION
-            $_SESSION["address-street"] = $addressStreet;
-            $_SESSION["address-number"] = $addressNumber;
-            $_SESSION["address-zip"] = $addressZip;
-            $_SESSION["address-city"] = $addressCity;
+        //----------------------------------------------------------------------------------------------------------
+        // ADD FIELDS TO SESSION
+        $_SESSION["address-street"] = $addressStreet;
+        $_SESSION["address-number"] = $addressNumber;
+        $_SESSION["address-zip"] = $addressZip;
+        $_SESSION["address-city"] = $addressCity;
 
-            // DELIVERY TIME AND DATE
-            $date = new DateTime("now", new DateTimeZone('Europe/Brussels'));
-            $timeNormalDelivery = date("H:i:s", strtotime('+2 hours', strtotime($date->format('H:i'))));
-            $timeExpressDelivery = date("H:i:s", strtotime('+45 minutes', strtotime($date->format('H:i'))));
-            $timeDelivery = $timeNormalDelivery;
+        // DELIVERY TIME AND DATE
+        $date = new DateTime("now", new DateTimeZone('Europe/Brussels'));
+        $timeNormalDelivery = date("H:i:s", strtotime('+2 hours', strtotime($date->format('H:i'))));
+        $timeExpressDelivery = date("H:i:s", strtotime('+45 minutes', strtotime($date->format('H:i'))));
+        $timeDelivery = $timeNormalDelivery;
 
-            $productsText = '';
-            foreach ($orderedProducts as $orderedProduct) {
-                $productsText .= $orderedProduct . '<br />';
-            }
-
-            $productsText1 = createOrderTable($products, $orderedProducts);
-
-            $bodyText = '<p>Hello, </p>';
-            $bodyText .= '<p>You ordered the following at The shop:</p><p>' . $productsText1 . '</p>';
-            $bodyText .= '<p>The order address is ' . $addressStreet . ' ' . $addressNumber . ', ' . $addressZip . ' ' . $addressCity . '</p>';
-            $bodyText .= '<p>Your order wil be ready at <strong>' . $timeDelivery . '</strong> . The total amount is <strong>' . $orderAmount . 'eur</strong></p>';
-            $bodyText .= '<p>Thanks for your order.</p>';
-
-            //SEND MAIL
-            $mailArray = [
-                'toAddress' => 'gwen.ellegeest@outlook.com',
-                'toName' => 'Gwen Ellegeest',
-                'subject' => 'Your order from the restaurant ',
-                'body' => $bodyText,
-            ];
-
-            try {
-                $mail = new Mailer(true, $mailArray);
-                $mail->send();
-            } catch (Exception $e) {
-                //Note that this is catching the PHPMailer Exception class, not the global \Exception type!
-                echo 'Caught a ' . get_class($e) . ': ' . $e->getMessage();
-            }
-
-            // RESET FORM FIELDS
-            $nameFirst = $nameLast = $email = $addressStreet = $addressNumber = $addressZip = $addressCity = "";
+        $productsText = '';
+        foreach ($orderedProducts as $orderedProduct) {
+            $productsText .= $orderedProduct . '<br />';
         }
+
+        $productsText1 = createOrderTable($products, $orderedProducts);
+
+        $bodyText = '<p>Hello, </p>';
+        $bodyText .= '<p>You ordered the following at The shop:</p><p>' . $productsText1 . '</p>';
+        $bodyText .= '<p>The order address is ' . $addressStreet . ' ' . $addressNumber . ', ' . $addressZip . ' ' . $addressCity . '</p>';
+        $bodyText .= '<p>Your order wil be ready at <strong>' . $timeDelivery . '</strong> . The total amount is <strong>' . $orderAmount . 'eur</strong></p>';
+        $bodyText .= '<p>Thanks for your order.</p>';
+
+        //SEND MAIL
+        $mailArray = [
+            'toAddress' => 'gwen.ellegeest@outlook.com',
+            'toName' => 'Gwen Ellegeest',
+            'subject' => 'Your order from the restaurant ',
+            'body' => $bodyText,
+        ];
+
+        try {
+            $mail = new Mailer(true, $mailArray);
+            $mail->send();
+        } catch (Exception $e) {
+            //Note that this is catching the PHPMailer Exception class, not the global \Exception type!
+            echo 'Caught a ' . get_class($e) . ': ' . $e->getMessage();
+        }
+
+        // RESET FORM FIELDS
+        $nameFirst = $nameLast = $email = $addressStreet = $addressNumber = $addressZip = $addressCity = "";
+
 
     }
 
@@ -221,7 +223,6 @@
     //
     //    print_r($server);
     //-----------------------------------------------------------------------------
-    require('index.php');
     ?>
 
     <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks.</footer>

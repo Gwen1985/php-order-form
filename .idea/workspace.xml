@@ -19,11 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c74e992-d148-43c8-a766-063abb3a645f" name="Default Changelist" comment="">
+    <list default="true" id="2c74e992-d148-43c8-a766-063abb3a645f" name="Default Changelist" comment="added product.php file + changed product array">
+      <change afterPath="$PROJECT_DIR$/Drinks.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Food.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/form-view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +84,9 @@
       <workItem from="1600075612921" duration="2813000" />
       <workItem from="1600120959449" duration="912000" />
       <workItem from="1600242131363" duration="765000" />
-      <workItem from="1600244219336" duration="8207000" />
+      <workItem from="1600244219336" duration="10495000" />
+      <workItem from="1600433612212" duration="844000" />
+      <workItem from="1600440475998" duration="17079000" />
     </task>
     <task id="LOCAL-00001" summary="php commit">
       <created>1600073558305</created>
@@ -97,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600122478234</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added product.php file + changed product array">
+      <created>1600254530375</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600254530375</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,21 +130,30 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="php commit" />
     <MESSAGE value="added comments // code is not fixed!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comments // code is not fixed!!" />
+    <MESSAGE value="added product.php file + changed product array" />
+    <option name="LAST_COMMIT_MESSAGE" value="added product.php file + changed product array" />
   </component>
   <component name="WindowStateProjectService">
     <state x="711" y="343" key="#Notifications" timestamp="1599636482575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="711" y="343" key="#Notifications/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1599636482575" />
+    <state x="753" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1600455851819">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="753" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1600455851819" />
     <state x="629" y="297" key="EditFileWatcherDialog" timestamp="1599636728582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="629" y="297" key="EditFileWatcherDialog/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1599636728582" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1600244613047">
+    <state x="781" y="242" key="NewPhpClassDialog" timestamp="1600442396839">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1600244613047" />
+    <state x="781" y="242" key="NewPhpClassDialog/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1600442396839" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1600442409334">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1600442409334" />
     <state x="780" y="222" key="RollbackChangesDialog" timestamp="1600073580627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -141,10 +162,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="262" y="193" key="SettingsEditor/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1600072784685" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1600122484857">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1600254535952">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1600122484857" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/460.1080.1000.504@0.0.1920.1040" timestamp="1600254535952" />
     <state x="623" y="225" key="search.everywhere.popup" timestamp="1599771292013">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
